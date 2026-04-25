@@ -2,11 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Login</title>
-    <!-- Google Fonts для элегантной типографики -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (Free) для иконок -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Вход • Secure Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -17,114 +15,104 @@
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 10% 20%, rgba(5, 15, 25, 1) 0%, rgba(0, 0, 0, 0.95) 100%);
+            background: radial-gradient(circle at 10% 20%, #050f19 0%, #000000 100%);
             font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            position: relative;
-            overflow-x: hidden;
+            overflow-y: auto;
         }
 
-        /* анимированные абстрактные фоновые элементы */
         body::before {
             content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            background: radial-gradient(ellipse at 30% 40%, rgba(255, 80, 120, 0.08), transparent 70%);
-            pointer-events: none;
-            animation: slowDrift 24s infinite alternate;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            width: 130%;
-            height: 130%;
-            bottom: -30%;
-            right: -30%;
-            background: radial-gradient(ellipse at 70% 80%, rgba(80, 160, 255, 0.06), transparent 70%);
-            pointer-events: none;
-            animation: slowDriftReverse 20s infinite alternate;
-        }
-
-        @keyframes slowDrift {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-            100% { transform: translate(3%, 2%) scale(1.05); opacity: 0.9; }
-        }
-
-        @keyframes slowDriftReverse {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            100% { transform: translate(-2%, -3%) scale(1.07); opacity: 0.8; }
-        }
-
-        /* главная карточка — стеклянный эффект */
-        .glass-card {
-            background: rgba(20, 28, 40, 0.55);
-            backdrop-filter: blur(16px);
-            border-radius: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset;
+            position: fixed;
             width: 100%;
-            max-width: 520px;
-            padding: 2.5rem 2rem 3rem;
-            transition: all 0.3s ease;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255, 80, 120, 0.05), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
             position: relative;
             z-index: 10;
         }
 
-        /* декоративные блики */
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            border-radius: 3rem 3rem 0 0;
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Заголовок и иконка */
-        .icon-header {
+        .lang-btn {
+            background: rgba(20, 28, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #cbd5e6;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: rgba(100, 130, 200, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+
+        .lang-btn:hover {
+            background: rgba(100, 130, 200, 0.35);
+        }
+
+        .glass-card {
+            background: rgba(20, 28, 40, 0.55);
+            backdrop-filter: blur(16px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            padding: 2.5rem 2rem;
+        }
+
+        .login-header {
             text-align: center;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
         }
 
         .lock-icon {
-            font-size: 3.8rem;
+            font-size: 3rem;
             background: linear-gradient(135deg, #fff, #b0c4ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
         }
 
-        h1 {
-            font-size: 2.2rem;
+        .login-title {
+            font-size: 1.8rem;
             font-weight: 600;
-            letter-spacing: -0.3px;
             background: linear-gradient(120deg, #FFFFFF, #C0D4FF);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
 
-        .sub {
+        .login-sub {
             color: #9aa9c1;
-            font-weight: 400;
-            font-size: 0.9rem;
-            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
         }
 
-        /* поля ввода */
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
             position: relative;
         }
 
@@ -134,289 +122,194 @@
             top: 50%;
             transform: translateY(-50%);
             color: #7e8aa8;
-            font-size: 1.2rem;
-            transition: color 0.2s;
+            font-size: 1rem;
             pointer-events: none;
         }
 
         input {
             width: 100%;
             background: rgba(12, 18, 28, 0.7);
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 1rem 1rem 2.8rem;
-            font-size: 1rem;
-            font-family: 'Inter', monospace;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
             border-radius: 2rem;
             color: #f0f3fa;
             outline: none;
-            transition: all 0.25s ease;
-            letter-spacing: 0.2px;
-            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         input:focus {
-            border-color: rgba(255, 130, 170, 0.7);
+            border-color: rgba(255, 130, 170, 0.6);
             background: rgba(18, 26, 40, 0.9);
-            box-shadow: 0 0 0 3px rgba(255, 100, 140, 0.2);
         }
 
-        input::placeholder {
-            color: #5f6c8a;
-            font-weight: 400;
-            font-size: 0.9rem;
-        }
-
-        /* кнопка */
-        .btn-submit {
+        .btn-login {
             width: 100%;
             background: linear-gradient(95deg, #2a2f42, #1e2335);
             border: none;
-            padding: 1rem;
+            padding: 0.9rem;
             border-radius: 2.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            font-family: 'Inter', sans-serif;
             color: #eef3ff;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .btn-submit i {
-            font-size: 1.1rem;
-            transition: transform 0.2s;
-        }
-
-        .btn-submit:hover {
+        .btn-login:hover {
             background: linear-gradient(95deg, #3a3f58, #282e44);
-            transform: scale(1.01);
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 180, 200, 0.4);
+            transform: translateY(-1px);
         }
 
-        .btn-submit:active {
-            transform: scale(0.98);
-        }
-
-        /* сообщение заглушки — теперь нейтральное, без «неправильно» */
-        .info-message {
-            margin-top: 1.8rem;
-            background: rgba(100, 120, 160, 0.12);
-            backdrop-filter: blur(8px);
-            border-radius: 2rem;
-            padding: 1rem 1.2rem;
-            border-left: 4px solid #7c8db0;
-            transition: all 0.25s ease;
+        .login-message {
+            margin-top: 1rem;
             text-align: center;
-        }
-
-        .info-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            font-weight: 600;
-            color: #cbd8f0;
-            font-size: 0.95rem;
-            letter-spacing: -0.2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-title i {
-            font-size: 1.2rem;
+            font-size: 0.75rem;
             color: #8d9fcc;
-        }
-
-        .info-details {
-            color: #b7c4e2;
-            font-size: 0.85rem;
-            font-weight: 500;
-            word-break: break-word;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            display: inline-block;
-            margin-top: 0.3rem;
-        }
-
-        /* элегантный бейдж */
-        .demo-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(140, 160, 200, 0.2);
-            padding: 0.25rem 0.9rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #a6b9dc;
-            margin-top: 0.5rem;
-            backdrop-filter: blur(4px);
         }
 
         .footer-note {
             text-align: center;
             font-size: 0.7rem;
             color: #5c6a89;
-            margin-top: 2rem;
-            letter-spacing: 0.3px;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-top: 1.2rem;
-        }
-
-        /* декоративные светящиеся точки */
-        .glow-dot {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(255, 120, 160, 0.2), transparent 80%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
         }
 
         @media (max-width: 550px) {
-            .glass-card {
-                padding: 2rem 1.5rem 2.2rem;
-                border-radius: 2rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+            .glass-card { padding: 1.8rem 1.5rem; }
+            .login-title { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
+<div class="container">
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="ru">РУС</button>
+        <button class="lang-btn" data-lang="en">ENG</button>
+    </div>
 
-<div class="glass-card">
-    <div class="icon-header">
-        <div class="lock-icon">
-            <i class="fas fa-door-open"></i>
+    <div class="glass-card">
+        <div class="login-header">
+            <div class="lock-icon">
+                <i class="fas fa-door-open"></i>
+            </div>
+            <div class="login-title" id="loginTitle">secure access</div>
+            <div class="login-sub" id="loginSub">вход в систему</div>
         </div>
-        <h1>Panel</h1>
-        <div class="sub">Login</div>
-    </div>
 
-    <!-- форма входа — стильная заглушка, никаких упоминаний "неправильно" -->
-    <div class="input-group">
-        <i class="fas fa-envelope input-icon"></i>
-        <input type="email" id="emailInput" placeholder="example@domain.com" value="" autocomplete="off">
-    </div>
-    <div class="input-group">
-        <i class="fas fa-lock input-icon"></i>
-        <input type="password" id="passwordInput" placeholder="password" value="" autocomplete="off">
-    </div>
+        <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="emailInput" placeholder="email@example.com" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="passwordInput" placeholder="пароль" autocomplete="off">
+        </div>
 
-    <button class="btn-submit" id="submitBtn">
-        <i class="fas fa-arrow-right-to-bracket"></i> 
-        <span>Login</span>
-    </button>
-
-<!-- плавающие декоративные элементы -->
-<div class="glow-dot" style="top: 15%; left: -5%; opacity: 0.5;"></div>
-<div class="glow-dot" style="bottom: 5%; right: -8%; width: 180px; height: 180px; background: radial-gradient(circle, rgba(100, 150, 255, 0.2), transparent 80%);"></div>
+        <button class="btn-login" id="loginBtn">
+            <i class="fas fa-arrow-right-to-bracket"></i>
+            <span id="loginBtnText">войти</span>
+        </button>
+        <div class="login-message" id="loginMessage">
+            <i class="fas fa-shield-alt"></i> демонстрационная форма
+        </div>
+        <div class="footer-note" id="footerNote">
+            <i class="fas fa-laptop-code"></i> интерфейс для ознакомления
+        </div>
+    </div>
+</div>
 
 <script>
-    (function() {
-        // Элементы DOM
-        const emailInput = document.getElementById('emailInput');
-        const passwordInput = document.getElementById('passwordInput');
-        const submitBtn = document.getElementById('submitBtn');
-        const infoDetailsSpan = document.getElementById('infoDetails');
-
-        // просто элегантные фразы для заглушки (нейтральные, только визуальное сопровождение)
-        const demoPhrases = [
-            'API FAILL',
-            'API FAILL',
-            'API FAILL',
-            'API FAILL',
-            'API FAILL',
-            'API FAILL',
-            'API FAILL'
-        ];
-
-        function updateDemoMessage() {
-            const emailVal = emailInput.value.trim() || '<пустое поле>';
-            const passLen = passwordInput.value.length;
-            let passDisplay = passLen === 0 ? '<пусто>' : '•'.repeat(Math.min(passLen, 6)) + (passLen > 6 ? '…' : '');
-            
-            const randomPhrase = demoPhrases[Math.floor(Math.random() * demoPhrases.length)];
-            infoDetailsSpan.innerHTML = `<i class="fas fa-laptop-code"></i> ${randomPhrase}<br><span style="font-size:0.72rem; opacity:0.7; display:inline-block; margin-top:6px;">📋 введено: ${emailVal} / ${passDisplay}</span>`;
+    const translations = {
+        ru: {
+            loginTitle: "secure access",
+            loginSub: "вход в систему",
+            emailPlaceholder: "email@example.com",
+            passwordPlaceholder: "пароль",
+            loginBtnText: "войти",
+            loginMessageDefault: "<i class='fas fa-shield-alt'></i> демонстрационная форма",
+            footerNote: "<i class='fas fa-laptop-code'></i> интерфейс для ознакомления"
+        },
+        en: {
+            loginTitle: "secure access",
+            loginSub: "sign in to your account",
+            emailPlaceholder: "email@example.com",
+            passwordPlaceholder: "password",
+            loginBtnText: "sign in",
+            loginMessageDefault: "<i class='fas fa-shield-alt'></i> demonstration form",
+            footerNote: "<i class='fas fa-laptop-code'></i> demonstration interface"
         }
+    };
 
-        function gentleFeedback() {
-            // небольшая визуальная реакция без негатива
-            const btnIcon = submitBtn.querySelector('i');
-            const originalIcon = btnIcon.className;
-            btnIcon.className = 'fas fa-check-circle';
-            setTimeout(() => {
-                btnIcon.className = originalIcon;
-            }, 300);
-            
-            // лёгкое мерцание блока сообщения
-            const infoBox = document.getElementById('infoBox');
-            infoBox.style.transform = 'scale(1.01)';
-            infoBox.style.background = 'rgba(120, 140, 180, 0.18)';
-            setTimeout(() => {
-                infoBox.style.transform = '';
-                infoBox.style.background = '';
-            }, 250);
-            
-            // плавное обновление сообщения
-            updateDemoMessage();
+    let currentLang = 'ru';
+
+    function updateLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        document.getElementById('loginTitle').innerText = t.loginTitle;
+        document.getElementById('loginSub').innerText = t.loginSub;
+        document.getElementById('emailInput').placeholder = t.emailPlaceholder;
+        document.getElementById('passwordInput').placeholder = t.passwordPlaceholder;
+        document.getElementById('loginBtnText').innerText = t.loginBtnText;
+        document.getElementById('footerNote').innerHTML = t.footerNote;
+        
+        if (!window.loginTriggered) {
+            document.getElementById('loginMessage').innerHTML = t.loginMessageDefault;
         }
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+    }
 
-        // обработка клика / отправки — только визуальная красота, без текста "неправильно"
-        submitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            gentleFeedback();
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => updateLanguage(btn.getAttribute('data-lang')));
+    });
+
+    const loginBtn = document.getElementById('loginBtn');
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const loginMessage = document.getElementById('loginMessage');
+
+    function handleLogin() {
+        const email = emailInput.value.trim() || '(пусто)';
+        const pass = passwordInput.value ? '••••' : '(пусто)';
+        
+        if (currentLang === 'ru') {
+            loginMessage.innerHTML = `<i class="fas fa-info-circle"></i> введено: ${email} / ${pass}<br><span style="font-size:0.7rem;">демонстрационный режим</span>`;
+        } else {
+            loginMessage.innerHTML = `<i class="fas fa-info-circle"></i> entered: ${email} / ${pass}<br><span style="font-size:0.7rem;">demonstration mode</span>`;
+        }
+        window.loginTriggered = true;
+        
+        loginBtn.style.transform = 'scale(0.98)';
+        setTimeout(() => { loginBtn.style.transform = ''; }, 150);
+    }
+
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleLogin();
+    });
+
+    [emailInput, passwordInput].forEach(inp => {
+        inp.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleLogin();
+            }
         });
-        
-        // Enter тоже даёт элегантный отклик
-        const inputs = [emailInput, passwordInput];
-        inputs.forEach(inp => {
-            inp.addEventListener('keypress', (e) => {
-                if(e.key === 'Enter') {
-                    e.preventDefault();
-                    gentleFeedback();
-                }
-            });
-            inp.addEventListener('input', () => {
-                // просто обновляем отображаемые данные в заглушке
-                updateDemoMessage();
-                // небольшая плавная анимация блока
-                const infoBox = document.getElementById('infoBox');
-                infoBox.style.borderLeftColor = '#9aadcf';
-                setTimeout(() => {
-                    if(infoBox) infoBox.style.borderLeftColor = '#7c8db0';
-                }, 300);
-            });
-        });
-        
-        // начальная установка сообщения
-        updateDemoMessage();
-        
-        // автоплавное обновление сообщения каждые 7 секунд (меняем фразу)
-        setInterval(() => {
-            updateDemoMessage();
-        }, 7000);
-        
-        // предотваращаем любые реальные отправки (на всякий случай)
-        document.querySelectorAll('form').forEach(f => {
-            f.addEventListener('submit', (e) => e.preventDefault());
-        });
-        
-        // лёгкая анимация появления страницы
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.8s ease';
-        setTimeout(() => { document.body.style.opacity = '1'; }, 50);
-    })();
+    });
+
+    updateLanguage('ru');
 </script>
 </body>
 </html>
