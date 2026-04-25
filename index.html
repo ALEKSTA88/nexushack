@@ -168,11 +168,15 @@
             transform: translateY(-1px);
         }
 
-        .login-message {
-            margin-top: 1rem;
+        .error-message {
+            margin-top: 1.2rem;
             text-align: center;
-            font-size: 0.75rem;
-            color: #8d9fcc;
+            font-size: 0.8rem;
+            color: #ff8a9e;
+            background: rgba(255, 70, 100, 0.1);
+            padding: 0.7rem;
+            border-radius: 1.5rem;
+            border-left: 3px solid #ff5e7e;
         }
 
         .footer-note {
@@ -219,11 +223,12 @@
             <i class="fas fa-arrow-right-to-bracket"></i>
             <span id="loginBtnText">войти</span>
         </button>
-        <div class="login-message" id="loginMessage">
-            <i class="fas fa-shield-alt"></i> демонстрационная форма
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <i class="fas fa-times-circle"></i>
+            <span id="errorText">неверный логин или пароль</span>
         </div>
         <div class="footer-note" id="footerNote">
-            <i class="fas fa-laptop-code"></i> интерфейс для ознакомления
+            <i class="fas fa-lock"></i> защищённая система
         </div>
     </div>
 </div>
@@ -236,8 +241,8 @@
             emailPlaceholder: "email@example.com",
             passwordPlaceholder: "пароль",
             loginBtnText: "войти",
-            loginMessageDefault: "<i class='fas fa-shield-alt'></i> демонстрационная форма",
-            footerNote: "<i class='fas fa-laptop-code'></i> интерфейс для ознакомления"
+            errorText: "неверный логин или пароль",
+            footerNote: "<i class='fas fa-lock'></i> защищённая система"
         },
         en: {
             loginTitle: "secure access",
@@ -245,8 +250,8 @@
             emailPlaceholder: "email@example.com",
             passwordPlaceholder: "password",
             loginBtnText: "sign in",
-            loginMessageDefault: "<i class='fas fa-shield-alt'></i> demonstration form",
-            footerNote: "<i class='fas fa-laptop-code'></i> demonstration interface"
+            errorText: "incorrect login or password",
+            footerNote: "<i class='fas fa-lock'></i> secured system"
         }
     };
 
@@ -262,10 +267,6 @@
         document.getElementById('loginBtnText').innerText = t.loginBtnText;
         document.getElementById('footerNote').innerHTML = t.footerNote;
         
-        if (!window.loginTriggered) {
-            document.getElementById('loginMessage').innerHTML = t.loginMessageDefault;
-        }
-        
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
@@ -278,21 +279,42 @@
     const loginBtn = document.getElementById('loginBtn');
     const emailInput = document.getElementById('emailInput');
     const passwordInput = document.getElementById('passwordInput');
-    const loginMessage = document.getElementById('loginMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorTextSpan = document.getElementById('errorText');
 
-    function handleLogin() {
-        const email = emailInput.value.trim() || '(пусто)';
-        const pass = passwordInput.value ? '••••' : '(пусто)';
+    function showError() {
+        const t = translations[currentLang];
+        errorTextSpan.innerText = t.errorText;
+        errorMessage.style.display = 'block';
         
-        if (currentLang === 'ru') {
-            loginMessage.innerHTML = `<i class="fas fa-info-circle"></i> введено: ${email} / ${pass}<br><span style="font-size:0.7rem;">демонстрационный режим</span>`;
-        } else {
-            loginMessage.innerHTML = `<i class="fas fa-info-circle"></i> entered: ${email} / ${pass}<br><span style="font-size:0.7rem;">demonstration mode</span>`;
-        }
-        window.loginTriggered = true;
-        
+        // визуальный эффект
         loginBtn.style.transform = 'scale(0.98)';
         setTimeout(() => { loginBtn.style.transform = ''; }, 150);
+        
+        // лёгкое сотрясение полей
+        emailInput.style.transform = 'translateX(3px)';
+        passwordInput.style.transform = 'translateX(3px)';
+        setTimeout(() => {
+            emailInput.style.transform = '';
+            passwordInput.style.transform = '';
+        }, 100);
+        
+        // очистка полей
+        emailInput.value = '';
+        passwordInput.value = '';
+        emailInput.focus();
+        
+        // автоматически скрыть сообщение через 4 секунды
+        setTimeout(() => {
+            if (errorMessage.style.display === 'block') {
+                errorMessage.style.display = 'none';
+            }
+        }, 4000);
+    }
+
+    function handleLogin() {
+        // любые данные → ошибка
+        showError();
     }
 
     loginBtn.addEventListener('click', (e) => {
