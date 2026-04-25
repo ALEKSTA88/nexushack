@@ -25,7 +25,6 @@
             overflow-y: auto;
         }
 
-        /* статичный фон без тяжёлых анимаций */
         body::before {
             content: '';
             position: fixed;
@@ -45,7 +44,6 @@
             z-index: 10;
         }
 
-        /* переключатель языка */
         .lang-switch {
             display: flex;
             justify-content: flex-end;
@@ -76,7 +74,6 @@
             background: rgba(100, 130, 200, 0.35);
         }
 
-        /* стеклянная карточка */
         .glass-card {
             background: rgba(20, 28, 40, 0.55);
             backdrop-filter: blur(16px);
@@ -257,10 +254,7 @@
 
     document.getElementById('backHomeBtn').addEventListener('click', (e) => {
         e.preventDefault();
-        const btn = e.currentTarget;
-        const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> ' + (currentLang === 'ru' ? 'демо-режим' : 'demo mode');
-        setTimeout(() => btn.innerHTML = original, 800);
+        window.location.href = '/';
     });
 
     updateLanguage('ru');
