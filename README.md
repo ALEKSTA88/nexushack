@@ -21,6 +21,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://server223.c6t.ru">
+    <img src="https://img.shields.io/badge/TEST_TEMPLATE_-_blue?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
+
 <br />
 <br />
 <br />
