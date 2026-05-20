@@ -9,8 +9,7 @@
 <br />
 <br />
 
-<h1 align="center">✦ SECURE ACCESS ✦</h1>
-<h3 align="center">login template</h3>
+<h1 align="center">✦ LOGIN TEMPLATE ✦</h1>
 
 <br />
 <br />
