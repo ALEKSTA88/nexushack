@@ -1,27 +1,55 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/security-encrypted-brightgreen" />
+  <img src="https://img.shields.io/badge/design-minimal-purple" />
+  <img src="https://img.shields.io/badge/auth-ready-orange" />
+  <img src="https://img.shields.io/badge/glassmorphism-modern-blue" />
+</p>
 
-> A clean, bilingual login interface — English and Russian living together in harmony.
+<br />
+<br />
+
+<h1 align="center">✦ SECURE ACCESS ✦</h1>
+<h3 align="center">вход в систему</h3>
+
+<br />
+<br />
+
+## 📱 Login Interface
+
+**email@example.com**
+
+**пароль**
+
+<p align="center">
+  <kbd>→ войти</kbd>
+</p>
+
+<p align="center">
+  <sub>защищённая система</sub>
+</p>
+
+<br />
+<br />
+
+## ✨ Design Highlights
+
+- 🖤 **Clean minimalism** — zero clutter
+- 🌐 **Bilingual soul** — English header, Russian action
+- 💎 **Glassmorphism ready** — frosted backdrop with blur
+- ➡️ **Arrow forward** — fluid, directional CTA
+- 🛡️ **Trust footer** — "protected system" reassurance
 
 <br />
 
-## ✨ Visual Features
+## 🎨 Aesthetic Details
 
-| Feature | Description |
-|---------|-------------|
-| 🖤 Minimalism | Nothing extra — just email, password, and action |
-| 🌐 Bilingual | English header + Russian labels (or vice versa) |
-| ➡️ Arrow Button | Sleek "→ войти" instead of boring "Submit" |
-| 🛡️ Trust Footer | "защищённая система" — protected system |
-| 💎 Glass Effect | Frosted background with soft shadows |
-| 🌙 Dark Theme | Easy on the eyes, modern aesthetic |
-
-<br />
-
-## 🎯 Design Philosophy
-
-- **Focus** — Only what matters: access credentials
-- **Trust** — Security badge at the bottom builds confidence
-- **Flow** — Natural vertical rhythm, eyes move smoothly down
-- **Dual Language** — Works for English and Russian speakers simultaneously
+| Aspect | Description |
+|--------|-------------|
+| Background | Deep gradient (navy → violet) |
+| Card Material | Semi-transparent + backdrop blur |
+| Input Style | Rounded, subtle border glow on focus |
+| Button Hover | Smooth slide + brightness shift |
+| Language Blend | English + Russian = elegant duality |
 
 <br />
 
