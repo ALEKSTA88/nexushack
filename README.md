@@ -28,6 +28,6 @@
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/your/secure-access.git
+git clone https://github.com/ALEKSTA88/Login-Register-Pattern/
 cd secure-access
 open index.html
