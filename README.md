@@ -11,26 +11,6 @@
 <h1 align="center">✦ SECURE ACCESS ✦</h1>
 <h3 align="center">вход в систему</h3>
 
-<br />
-<br />
-
-## 📱 Login Interface
-
-**email@example.com**
-
-**пароль**
-
-<p align="center">
-  <kbd>→ войти</kbd>
-</p>
-
-<p align="center">
-  <sub>защищённая система</sub>
-</p>
-
-<br />
-<br />
-
 ## ✨ Design Highlights
 
 - 🖤 **Clean minimalism** — zero clutter
