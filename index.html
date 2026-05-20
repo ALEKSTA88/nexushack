@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Вход • Secure Access</title>
+    <title>Login • Secure Access</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -286,12 +286,12 @@
         const t = translations[currentLang];
         errorTextSpan.innerText = t.errorText;
         errorMessage.style.display = 'block';
+
         
-        // визуальный эффект
         loginBtn.style.transform = 'scale(0.98)';
         setTimeout(() => { loginBtn.style.transform = ''; }, 150);
+
         
-        // лёгкое сотрясение полей
         emailInput.style.transform = 'translateX(3px)';
         passwordInput.style.transform = 'translateX(3px)';
         setTimeout(() => {
@@ -299,12 +299,12 @@
             passwordInput.style.transform = '';
         }, 100);
         
-        // очистка полей
+        
         emailInput.value = '';
         passwordInput.value = '';
         emailInput.focus();
         
-        // автоматически скрыть сообщение через 4 секунды
+        
         setTimeout(() => {
             if (errorMessage.style.display === 'block') {
                 errorMessage.style.display = 'none';
@@ -313,7 +313,6 @@
     }
 
     function handleLogin() {
-        // любые данные → ошибка
         showError();
     }
 
