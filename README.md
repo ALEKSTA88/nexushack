@@ -1,6 +1,5 @@
 <p align="center">
   <img src="https://img.shields.io/badge/design-minimal-purple" />
-  <img src="https://img.shields.io/badge/auth-ready-orange" />
   <img src="https://img.shields.io/badge/glassmorphism-modern-blue" />
 </p>
 
